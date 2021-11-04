@@ -311,6 +311,12 @@
             line-height: normal;
         }
         
+        .visionFull2 {
+            font-size: calc(1.5vw + 30px);
+            color: #0c8820;
+            line-height: normal;
+        }
+        
         .logo-image {
             padding-top: 17px;
             height: 80px;
@@ -468,41 +474,19 @@
         var i5 = 0;
         var i6 = 0;
         var i7 = 0;
-        var txt1 = 'Hey';
-        var txt2 = 'there!';
-        var txt3 = 'My';
-        var txt4 = 'name';
-        var txt5 = 'is';
-        var txt6 = 'Achint';
-        var txt7 = 'Soni';
+        var txt1 = 'Hey there!';
+        var txt2 = 'My name is';
+        var txt3 = 'Achint Soni.';
+        var txt4 = 'Welcome to';
+        var txt5 = 'my portfolio!';
+        // var txt6 = 'Achint';
+        // var txt7 = 'Soni';
         var speed = 200;
-
-        function z() {
-            if (i7 < txt7.length) {
-                document.getElementById("demo7").innerHTML += txt7.charAt(i7);
-                i7++;
-                setTimeout(z, speed);
-            }
-
-        }
-
-        function r() {
-            if (i6 < txt6.length) {
-                document.getElementById("demo6").innerHTML += txt6.charAt(i6);
-                i6++;
-                if (i6 == 6)
-                    z();
-                setTimeout(r, speed);
-            }
-
-        }
 
         function a() {
             if (i5 < txt5.length) {
                 document.getElementById("demo5").innerHTML += txt5.charAt(i5);
                 i5++;
-                if (i5 == 2)
-                    r();
                 setTimeout(a, speed);
             }
 
@@ -512,7 +496,7 @@
             if (i4 < txt4.length) {
                 document.getElementById("demo4").innerHTML += txt4.charAt(i4);
                 i4++;
-                if (i4 == 4)
+                if (i4 == 10)
                     a();
                 setTimeout(w, speed);
             }
@@ -523,7 +507,7 @@
             if (i3 < txt3.length) {
                 document.getElementById("demo3").innerHTML += txt3.charAt(i3);
                 i3++;
-                if (i3 == 2)
+                if (i3 == 12)
                     w();
                 setTimeout(e, speed);
             }
@@ -533,7 +517,7 @@
             if (i2 < txt2.length) {
                 document.getElementById("demo2").innerHTML += txt2.charAt(i2);
                 i2++;
-                if (i2 == 6)
+                if (i2 == 10)
                     e();
                 setTimeout(t, speed);
             }
@@ -545,12 +529,13 @@
             if (i1 < txt1.length) {
                 document.getElementById("demo1").innerHTML += txt1.charAt(i1);
                 i1++;
-                if (i1 == 3)
+                if (i1 == 10)
                     t();
                 setTimeout(V, speed);
             }
 
         }
+
         function myfunction() {
             V();
 
@@ -655,11 +640,11 @@
               vertical-align: top; align-content: center;">
                             <p id="demo1" class="visionFull"></p>
                             <p id="demo2" class="visionFull"></p>
-                            <p id="demo3" class="visionFull"></p>
-                            <p id="demo4" class="visionFull"></p>
-                            <p id="demo5" class="visionFull"></p>
+                            <p id="demo3" class="visionFull2"></p>
+                            <p id="demo4" class="visionFull2"></p>
+<!--                             <p id="demo5" class="visionFull"></p>
                             <p id="demo6" class="visionFull"></p>
-                            <p id="demo7" class="visionFull"></p>
+                            <p id="demo7" class="visionFull"></p> -->
                         </div>
                     </div>
                 </div>
