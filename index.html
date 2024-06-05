@@ -508,7 +508,7 @@
             z-index: -1;
         }
     </style>
-    <script>
+<!--     <script>
         var i1 = 0;
         var i2 = 0;
         var i3 = 0;
@@ -625,7 +625,102 @@
             });
 
         }
+    </script> -->
+    <script>
+        var quotes = [
+            "The singularity is near. - Ray Kurzweil",
+            "Stay hungry, stay foolish. - Steve Jobs",
+            "AI is the new electricity. - Andrew Ng",
+            "Will robots inherit the earth? Yes, but they will be our children. - Marvin Minsky",
+            "Machine intelligence is the last invention that humanity will ever need to make. - Nick Bostrom",
+            "Our intelligence is what makes us human, and AI is an extension of that quality. - Stuart Russell",
+            "Happiness is only real when shared. - Jon Krakauer",
+            "And in that moment, I swear we were infinite. - Stephen Chbosky",
+            "What really knocks me out is a book that, when you're all done reading it, you wish the author that wrote it was a terrific friend of yours. - J.D. Salinger",
+            "The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved. - Jack Kerouac"
+        ];
+    
+        var speed = 150;
+        var displayIndex = 0;
+        var currentQuote = '';
+    
+        function typeWriter(text, elementId, callback) {
+            var i = 0;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+    
+        function displayRandomQuote() {
+            // Clear existing text
+            document.getElementById("demo").innerHTML = '';
+    
+            // Get a random quote
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            currentQuote = quotes[randomIndex];
+    
+            // Display the quote with typewriter effect
+            typeWriter(currentQuote, "demo", function() {
+                // Change quote every 10 seconds
+                setTimeout(displayRandomQuote, 10000);
+            });
+        }
+    
+        function myfunction() {
+            displayRandomQuote();
+    
+            $.fn.jQuerySimpleCounter = function(options) {
+                var settings = $.extend({
+                    start: 0,
+                    end: 100,
+                    easing: 'swing',
+                    duration: 400,
+                    complete: ''
+                }, options);
+    
+                var thisElement = $(this);
+    
+                $({
+                    count: settings.start
+                }).animate({
+                    count: settings.end
+                }, {
+                    duration: settings.duration,
+                    easing: settings.easing,
+                    step: function() {
+                        var mathCount = Math.ceil(this.count);
+                        thisElement.text(mathCount);
+                    },
+                    complete: settings.complete
+                });
+            };
+    
+            $('#number3').jQuerySimpleCounter({
+                end: 317,
+                duration: 10000
+            });
+            $('#number1').jQuerySimpleCounter({
+                end: 6,
+                duration: 15000
+            });
+            $('#number2').jQuerySimpleCounter({
+                end: 37,
+                duration: 10000
+            });
+            $('#number4').jQuerySimpleCounter({
+                end: 2,
+                duration: 20000
+            });
+        }
     </script>
+
 
 
 </head>
