@@ -521,16 +521,21 @@
             width: 100%; /* Full width */
             bottom: 0; /* Align to the bottom */
         }
-/*         .site-blocks-cover { */
-/*             background-color: #f0f0f0; /* Light background color */ */
-/*             background-attachment: fixed; */
-/*         } */
-/*         #particles-js { */
-/*             position: absolute; */
-/*             width: 100%; */
-/*             height: 100%; */
-/*             background: transparent; */
-/*         } */
+        .site-blocks-cover .mouse {
+            z-index: 3; /* Ensure the mouse icon is above all other elements */
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1; /* Ensure it is below the text content */
+        }
+        .overlay {
+            position: relative;
+            z-index: 2; /* Ensure the overlay is above the interactive background */
+        }
+        
     </style>
 <!--     <script>
         var i1 = 0;
