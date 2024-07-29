@@ -1,615 +1,919 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    <style>
-      :root {
-        --color-main: rgb(182, 0, 0);
-      }
-    
-      .eyeball {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: white;
-        z-index: 1000;
-      }    
-    
-      .part1 {
-        position: relative;
-        width: 50px; /* Reduced from 100px to 50px */
-        height: 50px; /* Reduced from 100px to 50px */
-        background-color: var(--color-main);
-        border: solid 1.5px black; /* Reduced from 3px to 1.5px */
-        border-radius: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: inset 0px 0px 10px;
-      }
-    
-      .pupil-main {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
-      }
-      
-      .pupil-main::before { 
-        content: '';
-        position: absolute;
-        width: 31px; /* Reduced from 62px to 31px */
-        height: 31px; /* Reduced from 62px to 31px */
-        border-radius: 100%;
-        box-shadow: inset 0px 0px 4px black; 
-        opacity: 0.5;
-      }
-    
-      .pupil-main::after { 
-        content: '';
-        position: absolute;
-        width: 0px;
-        height: 0px;
-        border: solid 3.75px black; /* Reduced from 7.5px to 3.75px */
-        background-color: var(--color-main);
-        border-radius: 100%;
-        animation: pupil-main 1s forwards;
-        animation-delay: 2s;
-      }
-    
-      .pupil-sub {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        z-index: 4;
-        width: 31px; /* Reduced from 62px to 31px */
-        height: 31px; /* Reduced from 62px to 31px */
-        border-radius: 100%;
-        background-color: transparent;
-        animation: pupil-1 1s forwards;
-      }
-    
-      .pupil-sub::before {
-        position: absolute;
-        content: '';
-        width: 6.25px; /* Reduced from 12.5px to 6.25px */
-        height: 5px; /* Reduced from 10px to 5px */
-        background-color: black;
-        border-radius: 100% 0px 0px 0px;
-        margin-top: -5.5px; /* Adjusted for smaller size */
-        margin-left: -2.75px; /* Adjusted for smaller size */
-        animation: pupil-sub-1 1s forwards;
-        animation-delay: 2s;
-      }
-    
-      .pupil-sub::after {
-        position: absolute;
-        content: ''; 
-        width: 8.875px; /* Reduced from 17.75px to 8.875px */
-        height: 8.875px; /* Reduced from 17.75px to 8.875px */
-        background-color: var(--color-main); 
-        border-radius: 100% 0px 0px 100%;
-        transform: skewY(14deg);
-        margin-left: 7px; /* Adjusted for smaller size */
-        margin-top: -5.5px; /* Adjusted for smaller size */
-        clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%);
-        animation: pupil-sub-2 1s forwards;
-        animation-delay: 2s;       
-      }
-    
-      #pupil {
-        content: '';
-        position: absolute;
-        width: 6.25px; /* Reduced from 12.5px to 6.25px */
-        height: 6.25px; /* Reduced from 12.5px to 6.25px */
-        border-radius: 50px;
-        margin-left: -2.75px; /* Adjusted for smaller size */
-        margin-top: -3.25px; /* Adjusted for smaller size */
-        background-color: black;
-        z-index: 1;
-        animation: pupil 0.8s forwards;
-        animation-delay: 2s;
-      }
-      
-      .pupil-sub:nth-child(2) {
-        animation: pupil-2 0s forwards; 
-        animation-delay: 0.2s;
-        opacity: 0;
-        transform: rotate(120deg);
-        z-index: 5;
-      }
-    
-      .pupil-sub:nth-child(3) { 
-        transform: rotate(240deg);
-        z-index: 6;
-        animation: pupil-3 0s forwards;
-        animation-delay: 0.4s;
-        opacity: 0;
-      }
-    
-      @keyframes pupil-1 {
-        100% {
-          transform: rotate(360deg); 
-          z-index: 0;
-        }
-      }
-    
-      @keyframes pupil-2 {
-        100% {
-          opacity: 1;
-          z-index: 0;
-        }
-      }
-    
-      @keyframes pupil-3 {
-        100% {
-          opacity: 1;
-          z-index: 0;
-        }
-      }
-    
-      @keyframes pupil-main {
-        100% {
-          width: 7.5px; /* Reduced from 15px to 7.5px */
-          height: 7.5px; /* Reduced from 15px to 7.5px */
-          border: solid 3.75px black; /* Reduced from 7.5px to 3.75px */
-        }
-      }
-    
-      @keyframes pupil-sub-1 {
-        100% {
-          width: 15px; /* Reduced from 30px to 15px */
-          height: 25px; /* Reduced from 50px to 25px */
-          border-radius: 100% 0px 0px 0px;
-          margin-top: -8.75px; /* Adjusted for smaller size */
-          margin-left: 0px;
-          z-index: 1;
-        }
-      }
-    
-      @keyframes pupil-sub-2 {
-        100% {
-          width: 20px; /* Reduced from 40px to 20px */
-          height: 20.5px; /* Reduced from 41px to 20.5px */
-          border-radius: 100% 0px 0px 100%;
-          transform: skewY(14deg);
-          margin-top: -7.5px; /* Adjusted for smaller size */
-          margin-left: 22px; /* Adjusted for smaller size */
-          clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%);
-          z-index: 2;
-        }
-      }
-    
-      @keyframes pupil {
-        100% {
-          width: 14.375px; /* Reduced from 28.75px to 14.375px */
-          height: 14.375px; /* Reduced from 28.75px to 14.375px */
-          margin-top: 6.25px; /* Adjusted for smaller size */
-          margin-left: -0.5px;
-          z-index: 0;
-        }
-      }
-    </style>
-    
-  </head>
-<body>
-  <div class="eyeball" id="preloader"> 
-      <div class="part1">
-          <div class="pupil-main"></div>
-          <div class="pupil-sub"><div id="pupil"></div></div>
-          <div class="pupil-sub"><div id="pupil"></div></div>
-          <div class="pupil-sub"><div id="pupil"></div></div>
-      </div>
-  </div>
-<div id="content" style="display: none;">  
-  <nav id="desktop-nav">
-      <div class="logo">Achint Soni</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Achint Soni</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#news" onclick="toggleMenu()">News</a></li>
-          <li><a href="#publications" onclick="toggleMenu()">Publications</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile_pic.png" alt="Achint Soni profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Achint Soni</h1>
-        <p class="section__text__p2">Research Student</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/CV.pdf')">
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/achint-soni-228882202/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/TrickyJustice'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/profile_pic.jpg"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Educational Background</h3>
-              <p>I am a Research Masters (Thesis) student in Computer Science at the 
-                <a href="https://cs.uwaterloo.ca" target="_blank" style="color: #ffaa00;">Cheriton School of Computer Science, University of Waterloo</a>, 
-                advised by 
-                <a href="https://sirisharambhatla.com" target="_blank" style="color: #ff5500;">Prof. Sirisha Rambhatla</a> and 
-                <a href="https://plg.uwaterloo.ca/~claclark/" target="_blank" style="color: #ff5500;">Prof. Charles Clarke</a>.
-                
-                <br />Previously, I received my B.Tech in Electrical Engineering from the 
-                <a href="https://www.iitk.ac.in" target="_blank" style="color: #ffaa00;">Indian Institute of Technology Kanpur</a>, 
-                where I was advised by 
-                <a href="http://www.iitk.ac.in/new/faiz-hamid" target="_blank" style="color: #ff5500;">Prof. Faiz Hamid</a> and 
-                <a href="http://home.iitk.ac.in/~lbehera/" target="_blank" style="color: #ff5500;">Prof. Laxmidhar Behera</a>.</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Research Interests</h3>
-              <p>
-                <li>Foundation models (including generative world models)</li>
-                <li>Image and video generation/editing</li>
-                <li>Multimodal (vision/language) understanding</li>
-                <li>Disentangled representation learning</li>
-              </p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              If you want to collaborate/have any questions feel free to shoot me an email. I am always interested in connecting with people.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#news'"
-      />
-    </section>
-    <section id="news">
-      <p class="section__text__p1">What's New</p>
-      <h1 class="title">News</h1>
-      <div class="news-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-<!--        <h2 class="news-sub-title">Most Recent</h2>-->
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt=""
-                  class="icon"
-                />
-                <div>
-                  <h3>May'24</h3>
-                  <p>Our work "Why do Variational Autoencoders really promote disentanglement?" got accepted to ICML 2024.</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Sep'23</h3>
-                  <p>Joined David R. Cheriton School of Computer Science at University of Waterloo as a graduate student</p>
-                </div>
-              </article>
-<!--          <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SASS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>TypeScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Material UI</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>-->
-            </div>
-          </div>
-          <div class="details-container">
-<!--        <h2 class="news-sub-title">Frontend Development</h2>-->
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>May'23</h3>
-                  <p>Graduated from IIT Kanpur with a B.Tech. degree majoring in Electrical Engineering, with minors in machine learning and theory of computation.</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Apr'23</h3>
-                  <p>Received an offer of admission to the MMath in Computer Science program at the University of Waterloo.</p>
-                </div>
-              </article>
-<!--          <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>-->
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#publications'"
-      />
-    </section>
-    <section id="publications">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Publications</h1>
-      <div class="news-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/Videoscore.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="news-sub-title project-title" style="font-size: 20px;">VIDEOSCORE: Building Automatic Metrics to Simulate Fine-grained Human Feedback for Video Generation</h2>
-            <p style="font-size: 15px;">Xuan He, Dongfu Jiang, Ge Zhang, Max Ku, <strong class="highlight-name">Achint Soni</strong>, Sherman Siu, Haonan Chen, Abhranil Chandra, Ziyan Jiang, Aaran Arulraj, Kai Wang, Quy Duc Do, Yuansheng Ni, Bohan Lyu, Yaswanth Narsupalli, Rongqi Fan, Zhiheng Lyu, Yuchen Lin, Wenhu Chen</p>
-            <p style="font-size: 15px;"><em></br>Preprint: Submitted to EMNLP, 2024</em></p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://arxiv.org/pdf/2406.15252', '_blank')"
-              >
-                Read More
-              </button>
-<!--          <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>    -->
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/Assumption_diag_VAE.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="news-sub-title project-title" style="font-size: 20px;">Why Do Variational Autoencoders Really Promote Disentanglement?</h2></br></br>
-            <p style="font-size: 15px;">Pratik Bhowal, <strong class="highlight-name">Achint Soni</strong>, Sirisha Rambhatla</p>
-            <p style="font-size: 15px;"><em></br></br></br>International Conference on Machine Learning (ICML), 2024</em></p>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://openreview.net/pdf?id=Ao9UUaScAU', '_blank')"
-              >
-                Read More
-              </button>
-<!--          <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button> -->
-            </div>
-          </div>
-      <!--<div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="news-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-        </div>                            -->
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:a2soni@uwaterloo.ca">a2soni@uwaterloo.ca</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href='https://www.linkedin.com/in/achint-soni-228882202/'>LinkedIn</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/twitter.png"
-            alt="Twitter icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://twitter.com/TrickyInjustice">Twitter</a></p>
-        </div>
-      </div>
-    </section>
-  </div>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; 2024 Achint Soni. All Rights Reserved.</p><p>Last Updated: July'22, 2024</p>
-    </footer>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHV25TEYFL"></script>
     <script>
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-        document.getElementById('preloader').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-        }, 3000);
-      });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-GHV25TEYFL');
     </script>
-    <script src="script.js"></script>
-  </body>
+    <meta charset="utf-8">
+    <title>Achint Soni</title>
+    <link rel="shortcut icon" href="./img/ai.jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contactus.css">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <title>Timeline</title> -->
+    <link rel="shortcut icon" href="./img/vision_small.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800'>
+    <link rel="stylesheet" href="dist/style1.css">
+    <link rel="shortcut icon" href="./img/logom.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="fonts/icomoon/style.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/contactus.css">
+    <link rel="shortcut icon" href="./img/vision_small.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="fonts/icomoon/style.css"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/contactus.css">
+
+
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+        @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+        a:link {
+            color: rgba(0, 255, 0, .75);
+            background-color: transparent;
+            text-decoration: none;
+        }
+        
+        a:visited {
+            color: pink;
+            background-color: transparent;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: red;
+            background-color: transparent;
+            /* text-decoration: underline; */
+        }
+        
+        a:active {
+            color: yellow;
+            background-color: transparent;
+            /* text-decoration: underline; */
+        }
+        .newfa:hover {
+            background-color: #414042;
+            /* color: #fff; */
+            color: #ffffff;
+            border: 1px solid #000000;
+            box-shadow: inset 0px 0px 0px 5px #f7941d;
+            transform: scale(1.2, 1.2);
+        }
+        
+        .newfa {
+            font-size: 35px;
+            color: #f7941d;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            border: 2px solid #f7941d;
+            line-height: 90px;
+            transition: all ease-in-out 0.20s, background-color ease-in-out 0.05s;
+        }
+        
+        .name {
+            display: flex;
+            display: inline-block;
+            width: 18%;
+            height: 100%;
+            padding-left: 5%;
+        }
+        
+        #medal {
+            width: 250px;
+        }
+        
+        .light {
+            animation: anim 2s infinite;
+        }
+        
+        @keyframes anim {
+            0% {
+                x: 111.416;
+                y: 50.37;
+            }
+            100% {
+                x: 400;
+                y: 50;
+            }
+        }
+        
+        .contact-section {
+            margin-top: 0;
+            padding-bottom: .65rem
+        }
+        
+        .newcontact {
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.4;
+        }
+        
+         ::placeholder {
+            color: white;
+        }
+        
+        .contact_text {
+            background-color: transparent;
+            border: 2px solid #f0f0f0;
+            width: 100% !important;
+            height: 2.4375rem;
+        }
+        
+        .login-trigger1 {
+            font-weight: bold;
+            color: #fff;
+            border: 2px solid #f7941d;
+            padding: 5px 10px;
+            border-radius: 50px;
+            position: relative;
+        }
+        
+        #parent {
+            height: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 50px;
+            color: rgba(255, 255, 255, .70);
+            position: relative;
+        }
+        
+        #border {
+            border-bottom: solid 3px rgba(0, 255, 0, .75);
+            position: absolute;
+            right: -7px;
+            width: 20px;
+        }
+        /* Animation */
+        
+        #parent {
+            animation: animated-text 2s steps(30, end) 1s 1 normal both
+        }
+        
+        #border {
+            animation: animated-cursor 600ms steps(30, end) infinite;
+        }
+        /* text animation */
+        
+        @keyframes animated-text {
+            from {
+                width: 0;
+            }
+            to {
+                width: 480px;
+            }
+        }
+        /* cursor animations */
+        
+        @keyframes animated-cursor {
+            from {
+                border-bottom-color: white;
+            }
+            to {
+                border-bottom-color: transparent;
+            }
+        }
+        
+        .sectionClass {
+            padding: 20px 0px 50px 0px;
+            position: relative;
+            display: block;
+        }
+        
+        .fullWidth {
+            width: 100% !important;
+            display: table;
+            float: none;
+            padding: 0;
+            min-height: 1px;
+            height: 100%;
+            position: relative;
+        }
+        
+        .sectiontitle {
+            background-position: center;
+            margin: 30px 0 0px;
+            text-align: center;
+            min-height: 20px;
+        }
+        
+        .sectiontitle h2 {
+            font-size: 30px;
+            color: #222;
+            margin-bottom: 0px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .headerLine {
+            width: 160px;
+            height: 2px;
+            display: inline-block;
+            background: #101F2E;
+        }
+        
+        .projectFactsWrap {
+            display: flex;
+            margin-top: 30px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        #projectFacts .fullWidth {
+            padding: 0;
+        }
+        
+        .projectFactsWrap .item {
+            width: 25%;
+            height: 100%;
+            padding: 50px 0px;
+            text-align: center;
+        }
+        /* 
+.projectFactsWrap .item:nth-child(1){
+  background: rgb(16, 31, 46);
+}
+
+.projectFactsWrap .item:nth-child(2){
+  background: rgb(18, 34, 51);
+}
+
+.projectFactsWrap .item:nth-child(3){
+  background: rgb(21, 38, 56);
+}
+
+.projectFactsWrap .item:nth-child(4){
+  background: rgb(23, 44, 66);
+} */
+        
+        .projectFactsWrap .item p.number {
+            font-size: 40px;
+            padding: 0;
+            font-weight: bold;
+        }
+        
+        .projectFactsWrap .item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+            margin: 0;
+            padding: 10px;
+            font-family: 'Open Sans';
+        }
+        
+        .projectFactsWrap .item span {
+            width: 60px;
+            background: rgba(255, 255, 255, 0.8);
+            height: 2px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .projectFactsWrap .item i {
+            vertical-align: middle;
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .projectFactsWrap .item:hover i,
+        .projectFactsWrap .item:hover p {
+            color: white;
+        }
+        
+        .projectFactsWrap .item:hover span {
+            background: white;
+        }
+        
+        @media (max-width: 786px) {
+            .projectFactsWrap .item {
+                flex: 0 0 50%;
+            }
+        }
+        
+        .acronym {
+            font-size: calc(1.5vw + 30px);  /* Adjust to your preference */
+            line-height: normal;
+            margin-left: 40px;
+            /* color: #555;     Color for the rest of the letters */
+        }
+
+        /* Styling for the first letter of the acronym */
+        .acronym::first-letter {
+            color: #0c8820;  /* Color for the first letter */
+            font-weight: bold;
+        }
+
+        /* Optional: if you want to increase the size of the first letter
+        .acronym::first-letter {
+            font-size: 30px;
+        } */
+
+        .visionFull {
+            font-size: calc(1.5vw + 30px);
+            line-height: normal;
+        }
+        
+        .visionFull2 {
+            font-size: calc(1.5vw + 30px);
+            color: #0c8820;
+            line-height: normal;
+        }
+        
+        .logo-image {
+            padding-top: 17px;
+            height: 80px;
+            overflow: hidden;
+            opacity: 1;
+            margin-top: 0px;
+        }
+        
+        .contact-section {
+            margin-top: 0;
+            padding-bottom: .65rem
+        }
+        
+        .newcontact {
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.4;
+        }
+        
+         ::placeholder {
+            color: white;
+        }
+        
+        .contact-information {
+            margin: 1rem auto 2rem;
+            width: 17rem !important
+        }
+        
+        .contact-form-container {
+            margin: auto;
+            max-width: 35rem
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        img {
+/*             -webkit-filter: grayscale(100%); */
+            /* Safari 6.0 - 9.0 */
+/*             filter: grayscale(100%); */
+        }
+        
+        img:hover {
+            -webkit-filter: grayscale(0%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(0%);
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #skills {
+            padding: 50px 15px;
+            text-align: center
+        }
+        
+        #skills h2 {
+            color: #1de41d;
+            margin-bottom: 50px
+        }
+        
+        #skills ul {
+            display: block;
+            margin: 0 auto;
+            padding: 0;
+            max-width: 800px
+        }
+        
+        #skills li {
+            display: inline-block;
+            margin: 7px;
+            padding: 5px 10px;
+            color: #000000;
+            background: #0c8820;
+            list-style: none;
+            cursor: default;
+            font-size: 1.2em
+        }
+        
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+            display: inline-block;
+            margin: 0px;
+            transition: 0.3s;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: -1;
+        }
+        
+        .logo-image {
+            padding-top: 17px;
+            height: 80px;
+            overflow: hidden;
+            opacity: 1;
+            margin-top: 0px;
+        }
+        
+        .aos-animate {
+            text-align: center;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-origin: center right;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: translateX(-100%) rotateY(-180deg);
+            z-index: -1;
+        }
+        
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            z-index: -1;
+        }
+        
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+            z-index: -1
+        }
+        
+        .flip-card-back {
+            background-color: white;
+            color: white;
+            opacity: 1;
+            transform: rotateY(180deg);
+            z-index: -1;
+        }
+        .highlight-name {
+            font-weight: bold;
+            color: #FFD700; /* Dark Yellow */
+        }
+        footer {
+            background-color: #222; /* Dark background color */
+            color: #fff; /* Text color */
+            text-align: center; /* Center the text */
+            padding: 10px 0; /* Padding top and bottom */
+            position: fixed; /* Fix the footer to the bottom of the page */
+            width: 100%; /* Full width */
+            bottom: 0; /* Align to the bottom */
+        }
+/*         .site-blocks-cover .mouse { */
+/*             z-index: 3; /* Ensure the mouse icon is above all other elements */ */
+/*         } */
+/*         #particles-js { */
+/*             position: absolute; */
+/*             width: 100%; */
+/*             height: 100%; */
+/*             background: transparent; */
+/*             z-index: 1; /* Ensure it is below the text content */ */
+/*         } */
+/*         .overlay { */
+/*             position: relative; */
+/*             z-index: 2; /* Ensure the overlay is above the interactive background */ */
+/*         } */
+        
+    </style>
+<!--     <script>
+        var i1 = 0;
+        var i2 = 0;
+        var i3 = 0;
+        var i4 = 0;
+        var i5 = 0;
+        var i6 = 0;
+        var i7 = 0;
+        var txt1 = 'Harnessing';
+        var txt2 = 'Energy,';
+        var txt3 = 'Living';
+        var txt4 = 'Life';
+        var txt5 = 'Outloud';
+//         var txt6 = 'Achint';
+//         var txt7 = 'Soni';
+        var speed = 150;
+
+        function a() {
+            if (i5 < txt5.length) {
+                document.getElementById("demo5").innerHTML += txt5.charAt(i5);
+                i5++;
+                setTimeout(a, speed);
+            }
+
+        }
+
+        function w() {
+            if (i4 < txt4.length) {
+                document.getElementById("demo4").innerHTML += txt4.charAt(i4);
+                i4++;
+                if (i4 == 4)
+                    a();
+                setTimeout(w, speed);
+            }
+
+        }
+
+        function e() {
+            if (i3 < txt3.length) {
+                document.getElementById("demo3").innerHTML += txt3.charAt(i3);
+                i3++;
+                if (i3 == 6)
+                    w();
+                setTimeout(e, speed);
+            }
+        }
+
+        function t() {
+            if (i2 < txt2.length) {
+                document.getElementById("demo2").innerHTML += txt2.charAt(i2);
+                i2++;
+                if (i2 == 7)
+                    e();
+                setTimeout(t, speed);
+            }
+
+        }
+
+        function V() {
+
+            if (i1 < txt1.length) {
+                document.getElementById("demo1").innerHTML += txt1.charAt(i1);
+                i1++;
+                if (i1 == 10)
+                    t();
+                setTimeout(V, speed);
+            }
+
+        }
+
+        function myfunction() {
+            V();
+
+            $.fn.jQuerySimpleCounter = function(options) {
+                var settings = $.extend({
+                    start: 0,
+                    end: 100,
+                    easing: 'swing',
+                    duration: 400,
+                    complete: ''
+                }, options);
+
+                var thisElement = $(this);
+
+                $({
+                    count: settings.start
+                }).animate({
+                    count: settings.end
+                }, {
+                    duration: settings.duration,
+                    easing: settings.easing,
+                    step: function() {
+                        var mathCount = Math.ceil(this.count);
+                        thisElement.text(mathCount);
+                    },
+                    complete: settings.complete
+                });
+            };
+
+            $('#number3').jQuerySimpleCounter({
+                end: 317,
+                duration: 10000
+            });
+            $('#number1').jQuerySimpleCounter({
+                end: 6,
+                duration: 15000
+            });
+            $('#number2').jQuerySimpleCounter({
+                end: 37,
+                duration: 10000
+            });
+            $('#number4').jQuerySimpleCounter({
+                end: 2,
+                duration: 20000
+            });
+
+        }
+    </script> -->
+<!--     <script>
+        var quotes = [
+            "The singularity is near. - Ray Kurzweil",
+            "Stay hungry, stay foolish. - Steve Jobs",
+            "AI is the new electricity. - Andrew Ng",
+            "Will robots inherit the earth? Yes, but they will be our children. - Marvin Minsky",
+            "Machine intelligence is the last invention that humanity will ever need to make. - Nick Bostrom",
+            "Our intelligence is what makes us human, and AI is an extension of that quality. - Stuart Russell",
+            "Happiness is only real when shared. - Jon Krakauer",
+            "And in that moment, I swear we were infinite. - Stephen Chbosky",
+            "What really knocks me out is a book that, when you're all done reading it, you wish the author that wrote it was a terrific friend of yours. - J.D. Salinger",
+            "The only people for me are the mad ones, the ones who are mad to live, mad to talk, mad to be saved. - Jack Kerouac"
+        ];
+    
+        var speed = 150;
+        var displayIndex = 0;
+        var currentQuote = '';
+    
+        function typeWriter(text, elementId, callback) {
+            var i = 0;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            type();
+        }
+    
+        function displayRandomQuote() {
+            // Clear existing text
+            document.getElementById("demo").innerHTML = '';
+    
+            // Get a random quote
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            currentQuote = quotes[randomIndex];
+    
+            // Display the quote with typewriter effect
+            typeWriter(currentQuote, "demo", function() {
+                // Change quote every 10 seconds
+                setTimeout(displayRandomQuote, 10000);
+            });
+        }
+    
+        function myfunction() {
+            displayRandomQuote();
+    
+            $.fn.jQuerySimpleCounter = function(options) {
+                var settings = $.extend({
+                    start: 0,
+                    end: 100,
+                    easing: 'swing',
+                    duration: 400,
+                    complete: ''
+                }, options);
+    
+                var thisElement = $(this);
+    
+                $({
+                    count: settings.start
+                }).animate({
+                    count: settings.end
+                }, {
+                    duration: settings.duration,
+                    easing: settings.easing,
+                    step: function() {
+                        var mathCount = Math.ceil(this.count);
+                        thisElement.text(mathCount);
+                    },
+                    complete: settings.complete
+                });
+            };
+    
+            $('#number3').jQuerySimpleCounter({
+                end: 317,
+                duration: 10000
+            });
+            $('#number1').jQuerySimpleCounter({
+                end: 6,
+                duration: 15000
+            });
+            $('#number2').jQuerySimpleCounter({
+                end: 37,
+                duration: 10000
+            });
+            $('#number4').jQuerySimpleCounter({
+                end: 2,
+                duration: 20000
+            });
+        }
+    </script> -->
+
+
+
+</head>
+
+<body onload="myfunction()" class="preload" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <div id="overlayer">
+        <div class="loader">
+            Loading...
+        </div>
+    </div>
+    <div class="site-wrap">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+            <div class="container nav-cont">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-10 d-none d-xl-block">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                                <li><a href="#home-section" class="nav-link active" style="color: #ffaa00;">Home</a></li>
+                                <li><a href="#news-section" class="nav-link">News</a></li>
+                                <li><a href="#publications-section" class="nav-link">Publications</a></li>
+                                <li class="social"><a href="https://trickyjustice.github.io/CV.pdf" class="nav-link" target="_blank"><i class="far fa-file-alt"></i></a></li>
+                                <li class="social"><a href="https://github.com/TrickyJustice" class="nav-link" target="_blank"><i class="fab fa-github"></i></a></li>
+                                <li class="social"><a href="https://scholar.google.ca/citations?user=onzZ8qUAAAAJ&hl=en" class="nav-link" target="_blank"><i class="fa-brands fa-google-scholar"></i></a></li>
+                                <li class="social"><a href="mailto:a2soni@uwaterloo.ca" class="nav-link" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
+                                <li class="social"><a href="https://www.linkedin.com/in/achint-soni-228882202/" class="nav-link" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>  
+                                <li class="social"><a href="https://twitter.com/TrickyInjustice" class="nav-link" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+                        <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="fas fa-bars"></span></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="site-blocks-cover overlay" data-aos="fade" id="home-section">
+            <div id="particles-js"></div>
+            <div style="display: flex; align-items: center; height: 100vh; position: relative; z-index: 2;">
+                <div style="width: 40vw; clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); z-index: 2;">
+                    <img src="images/profile_pic.jpg" class="unselectable" style="width: 100%; height: auto; padding: 20vh 5vw;" alt="">
+                </div>
+                <div style="width: 60vw; padding: 23vh 5vw; color: #fff; line-height: 1.6; z-index: 2;">
+                    <p style="font-size: 25px;">
+                        I am a Research Masters (Thesis) student in Computer Science at the 
+                        <a href="https://cs.uwaterloo.ca" target="_blank" style="color: #ffaa00;">Cheriton School of Computer Science, University of Waterloo</a>, 
+                        advised by 
+                        <a href="https://sirisharambhatla.com" target="_blank" style="color: #ff5500;">Prof. Sirisha Rambhatla</a> and 
+                        <a href="https://plg.uwaterloo.ca/~claclark/" target="_blank" style="color: #ff5500;">Prof. Charles Clarke</a>. 
+                        Previously, I received my B.Tech in Electrical Engineering from the 
+                        <a href="https://www.iitk.ac.in" target="_blank" style="color: #ffaa00;">Indian Institute of Technology Kanpur</a>, 
+                        where I was advised by 
+                        <a href="http://www.iitk.ac.in/new/faiz-hamid" target="_blank" style="color: #ff5500;">Prof. Faiz Hamid</a> and 
+                        <a href="http://home.iitk.ac.in/~lbehera/" target="_blank" style="color: #ff5500;">Prof. Laxmidhar Behera</a>.
+                    </p>
+                    <p style="font-size: 25px;">My primary research areas are:</p>
+                    <div style="font-size: 20px;">
+                        Foundation models (including generative world models), image and video generation/editing, multimodal (vision/language) understanding, and disentangled representation learning.
+                    </div>
+                    <p style="font-size: 20px; margin-top: 20px;">If you want to collaborate/have any questions feel free to shoot me an email. I am always interested in connecting with people.</p>
+                </div>
+            </div>
+<!--             <a href="#publications-section" class="mouse smoothscroll" style="z-index: 3;">
+                <span class="mouse-icon">
+                    <span class="mouse-wheel"></span>
+                </span>
+            </a> -->
+        </div>
+    </div>
+
+    <div class="site-section cta-big-image" id="news-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="mb-3 section-title"><span class="section-title-part">News</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    <ul style="font-size: 20px; list-style-type: disc; padding-left: 20px; text-align: left;">
+                        <li>[May'24] Our work "Why do Variational Autoencoders really promote disentanglement?" got accepted to ICML 2024.</li> 
+                        <li>[Sep'23] Joined David R. Cheriton School of Computer Science at University of Waterloo as a graduate student</li>
+                        <li>[May'23] Graduated from IIT Kanpur with a B.Tech. degree majoring in Electrical Engineering, with minors in machine learning and theory of computation.</li>
+                        <li>[Apr'23] received an offer of admission to the MMath in Computer Science program at the University of Waterloo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <div class="site-section cta-big-image" id="publications-section">
+        <div class="container">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h2 class="mb-3 section-title"><span class="section-title-part">Publications</span></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
+                    <img src="Videoscore.png" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
+                </div>
+                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/pdf/2406.15252" target="_blank">VIDEOSCORE: Building Automatic Metrics to Simulate Fine-grained Human Feedback for Video Generation</a></h3>
+                    <p style="font-size: 18px;"> Xuan He, Dongfu Jiang, Ge Zhang, Max Ku, <strong class="highlight-name">Achint Soni</strong>, Sherman Siu, Haonan Chen, Abhranil Chandra, Ziyan Jiang, Aaran Arulraj, Kai Wang, Quy Duc Do, Yuansheng Ni, Bohan Lyu, Yaswanth Narsupalli, Rongqi Fan, Zhiheng Lyu, Yuchen Lin, Wenhu Chen</p>
+                    <p style="font-size: 18px;"> <em>Preprint: Submitted to EMNLP, 2024</em></p>
+<!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
+                    <div style="background-color: #ffffff; padding: 10px; border-radius: 15px;">
+                        <img src="Assumption_diag_VAE.png" style="border-radius: 5px;" alt="Publication Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 24px;"><a href="https://openreview.net/pdf?id=Ao9UUaScAU" target="_blank">Why Do Variational Autoencoders Really Promote Disentanglement?</a></h3>
+                    <p style="font-size: 18px;"> Pratik Bhowal, <strong class="highlight-name">Achint Soni</strong>, Sirisha Rambhatla</p>
+                    <p style="font-size: 18px;"><em> International Conference on Machine Learning (ICML), 2024</em></p>
+<!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> Despite not being designed for this purpose, the use of variational autoencoders (VAEs) has proven remarkably effective for disentangled representation learning (DRL). Recent research attributes this success to certain characteristics of the loss function that prevent latent space rotation, or hypothesize about the orthogonality properties of the decoder by drawing parallels with principal component analysis (PCA). This hypothesis, however, has only been tested experimentally for linear VAEs, and the theoretical justification still remains an open problem. Moreover, since real-world VAEs are often inherently non-linear due to the use of neural architectures, understanding DRL capabilities of real-world VAEs remains a critical task. Our work takes a step towards understanding disentanglement in real-world VAEs to theoretically establish how the orthogonality properties of the decoder promotes disentanglement in practical applications. Complementary to our theoretical contributions, our experimental results corroborate our analysis. Code is available at <a href="https://github.com/criticalml-uw/Disentanglement-in-VAE" target="_blank">https://github.com/criticalml-uw/Disentanglement-in-VAE</a>.</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background-color: #222; color: #fff; text-align: center; padding: 10px 0;">
+        <p>&copy; 2024 Achint Soni. All rights reserved. Last updated June 16, 2024</p>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/brands.js" integrity="sha384-sCI3dTBIJuqT6AwL++zH7qL8ZdKaHpxU43dDt9SyOzimtQ9eyRhkG3B7KMl6AO19" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3047503af5.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
 </html>
