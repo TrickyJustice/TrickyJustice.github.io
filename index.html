@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <style>
+      :root {
+        --color-main: rgb(182, 0, 0);
+      }
+    
+      .eyeball {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        z-index: 1000;
+      }    
+    
+      .part1 {
+        position: relative;
+        width: 50px; /* Reduced from 100px to 50px */
+        height: 50px; /* Reduced from 100px to 50px */
+        background-color: var(--color-main);
+        border: solid 1.5px black; /* Reduced from 3px to 1.5px */
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: inset 0px 0px 10px;
+      }
+    
+      .pupil-main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+      }
+      
+      .pupil-main::before { 
+        content: '';
+        position: absolute;
+        width: 31px; /* Reduced from 62px to 31px */
+        height: 31px; /* Reduced from 62px to 31px */
+        border-radius: 100%;
+        box-shadow: inset 0px 0px 4px black; 
+        opacity: 0.5;
+      }
+    
+      .pupil-main::after { 
+        content: '';
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        border: solid 3.75px black; /* Reduced from 7.5px to 3.75px */
+        background-color: var(--color-main);
+        border-radius: 100%;
+        animation: pupil-main 1s forwards;
+        animation-delay: 2s;
+      }
+    
+      .pupil-sub {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        z-index: 4;
+        width: 31px; /* Reduced from 62px to 31px */
+        height: 31px; /* Reduced from 62px to 31px */
+        border-radius: 100%;
+        background-color: transparent;
+        animation: pupil-1 1s forwards;
+      }
+    
+      .pupil-sub::before {
+        position: absolute;
+        content: '';
+        width: 6.25px; /* Reduced from 12.5px to 6.25px */
+        height: 5px; /* Reduced from 10px to 5px */
+        background-color: black;
+        border-radius: 100% 0px 0px 0px;
+        margin-top: -5.5px; /* Adjusted for smaller size */
+        margin-left: -2.75px; /* Adjusted for smaller size */
+        animation: pupil-sub-1 1s forwards;
+        animation-delay: 2s;
+      }
+    
+      .pupil-sub::after {
+        position: absolute;
+        content: ''; 
+        width: 8.875px; /* Reduced from 17.75px to 8.875px */
+        height: 8.875px; /* Reduced from 17.75px to 8.875px */
+        background-color: var(--color-main); 
+        border-radius: 100% 0px 0px 100%;
+        transform: skewY(14deg);
+        margin-left: 7px; /* Adjusted for smaller size */
+        margin-top: -5.5px; /* Adjusted for smaller size */
+        clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%);
+        animation: pupil-sub-2 1s forwards;
+        animation-delay: 2s;       
+      }
+    
+      #pupil {
+        content: '';
+        position: absolute;
+        width: 6.25px; /* Reduced from 12.5px to 6.25px */
+        height: 6.25px; /* Reduced from 12.5px to 6.25px */
+        border-radius: 50px;
+        margin-left: -2.75px; /* Adjusted for smaller size */
+        margin-top: -3.25px; /* Adjusted for smaller size */
+        background-color: black;
+        z-index: 1;
+        animation: pupil 0.8s forwards;
+        animation-delay: 2s;
+      }
+      
+      .pupil-sub:nth-child(2) {
+        animation: pupil-2 0s forwards; 
+        animation-delay: 0.2s;
+        opacity: 0;
+        transform: rotate(120deg);
+        z-index: 5;
+      }
+    
+      .pupil-sub:nth-child(3) { 
+        transform: rotate(240deg);
+        z-index: 6;
+        animation: pupil-3 0s forwards;
+        animation-delay: 0.4s;
+        opacity: 0;
+      }
+    
+      @keyframes pupil-1 {
+        100% {
+          transform: rotate(360deg); 
+          z-index: 0;
+        }
+      }
+    
+      @keyframes pupil-2 {
+        100% {
+          opacity: 1;
+          z-index: 0;
+        }
+      }
+    
+      @keyframes pupil-3 {
+        100% {
+          opacity: 1;
+          z-index: 0;
+        }
+      }
+    
+      @keyframes pupil-main {
+        100% {
+          width: 7.5px; /* Reduced from 15px to 7.5px */
+          height: 7.5px; /* Reduced from 15px to 7.5px */
+          border: solid 3.75px black; /* Reduced from 7.5px to 3.75px */
+        }
+      }
+    
+      @keyframes pupil-sub-1 {
+        100% {
+          width: 15px; /* Reduced from 30px to 15px */
+          height: 25px; /* Reduced from 50px to 25px */
+          border-radius: 100% 0px 0px 0px;
+          margin-top: -8.75px; /* Adjusted for smaller size */
+          margin-left: 0px;
+          z-index: 1;
+        }
+      }
+    
+      @keyframes pupil-sub-2 {
+        100% {
+          width: 20px; /* Reduced from 40px to 20px */
+          height: 20.5px; /* Reduced from 41px to 20.5px */
+          border-radius: 100% 0px 0px 100%;
+          transform: skewY(14deg);
+          margin-top: -7.5px; /* Adjusted for smaller size */
+          margin-left: 22px; /* Adjusted for smaller size */
+          clip-path: polygon(0 0, 35% 0, 35% 100%, 0 100%);
+          z-index: 2;
+        }
+      }
+    
+      @keyframes pupil {
+        100% {
+          width: 14.375px; /* Reduced from 28.75px to 14.375px */
+          height: 14.375px; /* Reduced from 28.75px to 14.375px */
+          margin-top: 6.25px; /* Adjusted for smaller size */
+          margin-left: -0.5px;
+          z-index: 0;
+        }
+      }
+    </style>
+    
+  </head>
+<body>
+  <div class="eyeball" id="preloader"> 
+      <div class="part1">
+          <div class="pupil-main"></div>
+          <div class="pupil-sub"><div id="pupil"></div></div>
+          <div class="pupil-sub"><div id="pupil"></div></div>
+          <div class="pupil-sub"><div id="pupil"></div></div>
+      </div>
+  </div>
+<div id="content" style="display: none;">  
+  <nav id="desktop-nav">
+      <div class="logo">Achint Soni</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Achint Soni</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#news" onclick="toggleMenu()">News</a></li>
+          <li><a href="#publications" onclick="toggleMenu()">Publications</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/profile_pic.png" alt="Achint Soni profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Achint Soni</h1>
+        <p class="section__text__p2">Research Student</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/CV.pdf')">
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/achint-soni-228882202/'"
+          />
+          <img
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/TrickyJustice'"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/profile_pic.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Educational Background</h3>
+              <p>I am a Research Masters (Thesis) student in Computer Science at the 
+                <a href="https://cs.uwaterloo.ca" target="_blank" style="color: #ffaa00;">Cheriton School of Computer Science, University of Waterloo</a>, 
+                advised by 
+                <a href="https://sirisharambhatla.com" target="_blank" style="color: #ff5500;">Prof. Sirisha Rambhatla</a> and 
+                <a href="https://plg.uwaterloo.ca/~claclark/" target="_blank" style="color: #ff5500;">Prof. Charles Clarke</a>.
+                
+                <br />Previously, I received my B.Tech in Electrical Engineering from the 
+                <a href="https://www.iitk.ac.in" target="_blank" style="color: #ffaa00;">Indian Institute of Technology Kanpur</a>, 
+                where I was advised by 
+                <a href="http://www.iitk.ac.in/new/faiz-hamid" target="_blank" style="color: #ff5500;">Prof. Faiz Hamid</a> and 
+                <a href="http://home.iitk.ac.in/~lbehera/" target="_blank" style="color: #ff5500;">Prof. Laxmidhar Behera</a>.</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Research Interests</h3>
+              <p>
+                <li>Foundation models (including generative world models)</li>
+                <li>Image and video generation/editing</li>
+                <li>Multimodal (vision/language) understanding</li>
+                <li>Disentangled representation learning</li>
+              </p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              If you want to collaborate/have any questions feel free to shoot me an email. I am always interested in connecting with people.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#news'"
+      />
+    </section>
+    <section id="news">
+      <p class="section__text__p1">What's New</p>
+      <h1 class="title">News</h1>
+      <div class="news-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+<!--        <h2 class="news-sub-title">Most Recent</h2>-->
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt=""
+                  class="icon"
+                />
+                <div>
+                  <h3>May'24</h3>
+                  <p>Our work "Why do Variational Autoencoders really promote disentanglement?" got accepted to ICML 2024.</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Sep'23</h3>
+                  <p>Joined David R. Cheriton School of Computer Science at University of Waterloo as a graduate student</p>
+                </div>
+              </article>
+<!--          <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>SASS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>TypeScript</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Material UI</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>-->
+            </div>
+          </div>
+          <div class="details-container">
+<!--        <h2 class="news-sub-title">Frontend Development</h2>-->
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>May'23</h3>
+                  <p>Graduated from IIT Kanpur with a B.Tech. degree majoring in Electrical Engineering, with minors in machine learning and theory of computation.</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Apr'23</h3>
+                  <p>Received an offer of admission to the MMath in Computer Science program at the University of Waterloo.</p>
+                </div>
+              </article>
+<!--          <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Express JS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#publications'"
+      />
+    </section>
+    <section id="publications">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Publications</h1>
+      <div class="news-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/Videoscore.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="news-sub-title project-title" style="font-size: 20px;">VIDEOSCORE: Building Automatic Metrics to Simulate Fine-grained Human Feedback for Video Generation</h2>
+            <p style="font-size: 15px;">Xuan He, Dongfu Jiang, Ge Zhang, Max Ku, <strong class="highlight-name">Achint Soni</strong>, Sherman Siu, Haonan Chen, Abhranil Chandra, Ziyan Jiang, Aaran Arulraj, Kai Wang, Quy Duc Do, Yuansheng Ni, Bohan Lyu, Yaswanth Narsupalli, Rongqi Fan, Zhiheng Lyu, Yuchen Lin, Wenhu Chen</p>
+            <p style="font-size: 15px;"><em></br>Preprint: Submitted to EMNLP, 2024</em></p>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="window.open('https://arxiv.org/pdf/2406.15252', '_blank')"
+              >
+                Read More
+              </button>
+<!--          <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>    -->
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/Assumption_diag_VAE.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="news-sub-title project-title" style="font-size: 20px;">Why Do Variational Autoencoders Really Promote Disentanglement?</h2></br></br>
+            <p style="font-size: 15px;">Pratik Bhowal, <strong class="highlight-name">Achint Soni</strong>, Sirisha Rambhatla</p>
+            <p style="font-size: 15px;"><em></br></br></br>International Conference on Machine Learning (ICML), 2024</em></p>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="window.open('https://openreview.net/pdf?id=Ao9UUaScAU', '_blank')"
+              >
+                Read More
+              </button>
+<!--          <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button> -->
+            </div>
+          </div>
+      <!--<div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="news-sub-title project-title">Project Three</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+        </div>                            -->
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:a2soni@uwaterloo.ca">a2soni@uwaterloo.ca</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p><a href='https://www.linkedin.com/in/achint-soni-228882202/'>LinkedIn</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/twitter.png"
+            alt="Twitter icon"
+            class="icon contact-icon"
+          />
+          <p><a href="https://twitter.com/TrickyInjustice">Twitter</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2024 Achint Soni. All Rights Reserved.</p><p>Last Updated: July'22, 2024</p>
+    </footer>
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+        document.getElementById('preloader').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        }, 3000);
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
