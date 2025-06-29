@@ -89,9 +89,8 @@
         }
         
         a:hover {
-            color: red;
-            background-color: transparent;
-            /* text-decoration: underline; */
+            color: #0056b3; /* A darker blue on hover */
+            text-decoration: underline;
         }
         
         a:active {
@@ -102,7 +101,7 @@
         .newfa:hover {
             background-color: #414042;
             /* color: #fff; */
-            color: #ffffff;
+            color: #686464;
             border: 1px solid #000000;
             box-shadow: inset 0px 0px 0px 5px #f7941d;
             transform: scale(1.2, 1.2);
@@ -172,7 +171,7 @@
         
         .login-trigger1 {
             font-weight: bold;
-            color: #fff;
+            color: #887d7d;
             border: 2px solid #f7941d;
             padding: 5px 10px;
             border-radius: 50px;
@@ -404,9 +403,9 @@
             max-width: 35rem
         }
         
-        body {
+        /* body {
             font-family: Arial, Helvetica, sans-serif;
-        }
+        } */
         
         img {
 /*             -webkit-filter: grayscale(100%); */
@@ -422,6 +421,8 @@
         
         body {
             font-family: Arial, Helvetica, sans-serif;
+            background-color: #edd3d3; /* A light, clean grey */
+            color: #000000; /* Dark text for readability */
         }
         
         #skills {
@@ -519,11 +520,11 @@
         }
         .highlight-name {
             font-weight: bold;
-            color: #FFD700; /* Dark Yellow */
+            color: #000000; /* Dark Yellow */
         }
         footer {
-            background-color: #222; /* Dark background color */
-            color: #fff; /* Text color */
+            background-color: #ffffff; /* Dark background color */
+            color: #000000; /* Text color */
             text-align: center; /* Center the text */
             padding: 10px 0; /* Padding top and bottom */
             position: fixed; /* Fix the footer to the bottom of the page */
@@ -784,15 +785,15 @@
                     <div class="col-12 col-md-10 d-none d-xl-block">
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                <li><a href="#home-section" class="nav-link active" style="color: #ffaa00;">Home</a></li>
-                                <li><a href="#news-section" class="nav-link">News</a></li>
-                                <li><a href="#publications-section" class="nav-link">Publications</a></li>
-                                <li class="social"><a href="https://trickyjustice.github.io/Achint_CV_PhD.pdf" class="nav-link" target="_blank"><i class="far fa-file-alt"></i></a></li>
-                                <li class="social"><a href="https://github.com/TrickyJustice" class="nav-link" target="_blank"><i class="fab fa-github"></i></a></li>
-                                <li class="social"><a href="https://scholar.google.ca/citations?user=onzZ8qUAAAAJ&hl=en" class="nav-link" target="_blank"><i class="fa-brands fa-google-scholar"></i></a></li>
-                                <li class="social"><a href="mailto:a2soni@uwaterloo.ca" class="nav-link" target="_blank"><i class="fa-solid fa-envelope"></i></a></li>
-                                <li class="social"><a href="https://www.linkedin.com/in/achint-soni-228882202/" class="nav-link" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>  
-                                <li class="social"><a href="https://twitter.com/AchintSoni_" class="nav-link" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="#home-section" class="nav-link active" style="color: #ac8989;">Home</a></li>
+                                <li><a href="#news-section" class="nav-link" style="color: #ac8989;">News</a></li>
+                                <li><a href="#publications-section" class="nav-link" style="color: #ac8989;">Publications</a></li>
+                                <li class="social"><a href="https://trickyjustice.github.io/Achint_CV_PhD.pdf" class="nav-link" target="_blank" style="color: #ac8989;"><i class="far fa-file-alt"></i></a></li>
+                                <li class="social"><a href="https://github.com/TrickyJustice" class="nav-link" target="_blank" style="color: #ac8989;"><i class="fab fa-github"></i></a></li>
+                                <li class="social"><a href="https://scholar.google.ca/citations?user=onzZ8qUAAAAJ&hl=en" class="nav-link" target="_blank" style="color: #ac8989;"><i class="fa-brands fa-google-scholar"></i></a></li>
+                                <li class="social"><a href="mailto:a2soni@uwaterloo.ca" class="nav-link" target="_blank" style="color: #ac8989;"><i class="fa-solid fa-envelope"></i></a></li>
+                                <li class="social"><a href="https://www.linkedin.com/in/achint-soni-228882202/" class="nav-link" target="_blank" style="color: #ac8989;"><i class="fab fa-linkedin-in"></i></a></li>  
+                                <li class="social"><a href="https://twitter.com/AchintSoni_" class="nav-link" target="_blank" style="color: #ac8989;"><i class="fa-brands fa-x-twitter"></i></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -802,32 +803,31 @@
                 </div>
             </div>
         </header>
-        <div class="site-blocks-cover overlay" data-aos="fade" id="home-section">
+        <div class="site-blocks-cover" data-aos="fade" id="home-section">
             <div id="particles-js"></div>
-            <div style="display: flex; align-items: center; height: 100vh; position: relative; z-index: 2;">
-                <div style="width: 40vw; clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%); z-index: 2;">
-                    <img src="images/IMG_2984.jpeg" class="unselectable" style="width: 100%; height: auto; padding: 20vh 5vw;" alt="">
-                </div>
-                <div style="width: 60vw; padding: 23vh 5vw; color: #fff; line-height: 1.6; z-index: 2;">
-                    <p style="font-size: 25px;">
-                        I am a Research Masters (Thesis) student in Computer Science at the 
-                        <a href="https://cs.uwaterloo.ca" target="_blank" style="color: #ffaa00;">Cheriton School of Computer Science, University of Waterloo</a>, 
-                        advised by 
-                        <a href="https://sirisharambhatla.com" target="_blank" style="color: #ff5500;">Prof. Sirisha Rambhatla</a> and 
-                        <a href="https://plg.uwaterloo.ca/~claclark/" target="_blank" style="color: #ff5500;">Prof. Charles Clarke</a>. 
-                        Previously, I received my B.Tech in Electrical Engineering from the 
-                        <a href="https://www.iitk.ac.in" target="_blank" style="color: #ffaa00;">Indian Institute of Technology Kanpur</a>, 
-                        where I was advised by 
-                        <a href="http://www.iitk.ac.in/new/faiz-hamid" target="_blank" style="color: #ff5500;">Prof. Faiz Hamid</a> and 
-                        <a href="http://home.iitk.ac.in/~lbehera/" target="_blank" style="color: #ff5500;">Prof. Laxmidhar Behera</a>.
-                    </p>
-                    <p style="font-size: 25px;">My primary research areas are:</p>
-                    <div style="font-size: 20px;">
-                        Foundation models (including generative world models), image and video generation/editing, multimodal (vision/language) understanding, and disentangled representation learning.
+            <div class="container" style="position: relative; z-index: 2;">
+                <div class="row align-items-center justify-content-center min-vh-100">
+                    <div class="col-md-5 text-center mb-5 mb-md-0">
+                        <img src="images/IMG_2984.jpeg" class="unselectable" style="border-radius: 15px; max-width: 100%; height: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" alt="Achint Soni">
                     </div>
-                    <p style="font-size: 20px; margin-top: 20px;">If you want to collaborate/have any questions feel free to shoot me an email. I am always interested in connecting with people.</p>
+                    <div class="col-md-7">
+                        <h1 style="font-weight: 700; color: #000000;">Achint Soni</h1>
+                        <p style="font-size: 1.1rem; line-height: 1.8;">
+                            I am a Research Masters (Thesis) student in Computer Science at the 
+                            <a href="https://cs.uwaterloo.ca" target="_blank" style="color: #ac8989;">Cheriton School of Computer Science, University of Waterloo</a>, 
+                            advised by 
+                            <a href="https://sirisharambhatla.com" target="_blank" style="color: #ac8989;">Prof. Sirisha Rambhatla</a> and 
+                            <a href="https://plg.uwaterloo.ca/~claclark/" target="_blank" style="color: #ac8989;">Prof. Charles Clarke</a>. 
+                            Previously, I received my B.Tech in Electrical Engineering from the 
+                            <a href="https://www.iitk.ac.in" target="_blank" style="color: #ac8989;">Indian Institute of Technology Kanpur</a>, 
+                            where I was advised by 
+                            <a href="http://www.iitk.ac.in/new/faiz-hamid" target="_blank" style="color: #ac8989;">Prof. Faiz Hamid</a> and 
+                            <a href="http://home.iitk.ac.in/~lbehera/" target="_blank" style="color: #ac8989;">Prof. Laxmidhar Behera</a>.
+                        </p>
+                        <p style="font-size: 1.1rem; font-weight: 500;">My primary research areas are: Generative world models, image and video generation/editing, 3D reconstruction, and disentangled representation learning.</p>
+                        <p style="font-size: 1.0rem; margin-top: 20px;">If you want to collaborate or have any questions feel free to <a href="mailto:a2soni@uwaterloo.ca" style="color: #ac8989;">shoot me an email</a>. I am always interested in connecting with people.</p>
+                    </div>
                 </div>
-
             </div>
 <!--             <a href="#publications-section" class="mouse smoothscroll" style="z-index: 3;">
                 <span class="mouse-icon">
@@ -841,12 +841,13 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2 class="mb-3 section-title"><span class="section-title-part">News</span></h2>
+                    <h2 class="mb-3 section-title"><span class="section-title-part" style="color: #ac8989;">News</span></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="100">
                     <ul style="font-size: 20px; list-style-type: disc; padding-left: 20px; text-align: left;">
+                        <li>[May'24] My work "LOCATEdit : Graph Laplacian Optimized Cross Attention for Localized Text-Guided Image Editing" got accepted to ICCV 2025.</li> 
                         <li>[May'24] Our work "Why do Variational Autoencoders really promote disentanglement?" got accepted to ICML 2024.</li> 
                         <li>[Sep'23] Joined David R. Cheriton School of Computer Science at University of Waterloo as a graduate student</li>
                         <li>[May'23] Graduated from IIT Kanpur with a B.Tech. degree majoring in Electrical Engineering, with minors in machine learning and theory of computation.</li>
@@ -864,37 +865,62 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2 class="mb-3 section-title"><span class="section-title-part">Publications</span></h2>
+                    <h2 class="mb-3 section-title"><span class="section-title-part" style="color: #ac8989;">Publications</span></h2>
                 </div>
             </div>
-<!--             <div class="row">
+            <div class="row">
                 <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
-                    <img src="videoagent.png" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
+                   <video src="locatedit_video_2.mp4"  style="border-radius: 15px;" alt="Publication Video" class="img-fluid" autoplay muted loop playsinline></video>
                 </div>
                 <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                    <h3 style="font-size: 24px;"><a href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1539157/abstract" target="_blank">Opinion: Mental Health Research: To Augment or Not To Augment</a></h3>
-                    <p style="font-size: 18px;">  Argyrios Perivolaris, Alice Rueda, Karisa B Parkington, <strong class="highlight-name">Achint Soni</strong>strong>, Sirisha Rambhatla, Reza Samavi, Rakesh Jetly, Andrew James Greenshaw, Yanbo Zhang, Bo Cao, Sri Krishnan, Venkat Bhat</p>
-                    <p style="font-size: 18px;"> <em>Frontiers in Psychiatry, 2025</em></p> -->
+                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/pdf/2503.21541" target="_blank" style="color: #ac8989;">LOCATEdit : Graph Laplacian Optimized Cross Attention for Localized Text-Guided Image Editing</a></h3>
+                    <p style="font-size: 18px;"> <strong class="highlight-name">Achint Soni</strong>, Meet Soni, Sirisha Rambhatla </p>
+                    <p style="font-size: 18px;"> <em>ICCV, 2025</em></p>
 <!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
-<!--                 </div> -->
-<!--             </div> -->
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
                     <img src="videoagent.png" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
                 </div>
                 <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/abs/2410.10076" target="_blank">VideoAgent: Self-Improving Video Generation</a></h3>
+                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/abs/2410.10076" target="_blank" style="color: #ac8989;">VideoAgent: Self-Improving Video Generation</a></h3>
                     <p style="font-size: 18px;">  <strong class="highlight-name">Achint Soni</strong>, Sreyas Venkataraman, Abhranil Chandra, Sebastian Fischmeister, Percy Liang, Bo Dai, Sherry Yang</p>
-                    <p style="font-size: 18px;"> <em>Preprint, under review at ICML 2025</em></p>
+                    <p style="font-size: 18px;"> <em>Preprint, under review at NeurIPS 2025</em></p>
 <!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
+                   <img src="thesis.png" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
+                </div>
+                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 24px;"><a href="https://uwspace.uwaterloo.ca/items/6717c3e7-94ec-4073-a531-1b0fe1e9f79e" target="_blank" style="color: #ac8989;">Understanding and Enforcing Precise Control in Generative Models via Graph-Based Attention</a></h3>
+                    <p style="font-size: 18px;"> <strong class="highlight-name">Achint Soni</strong> </p>
+                    <p style="font-size: 18px;"> <em>Masters Thesis</em></p>
+<!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
+                    <img src="no-image.jpeg" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
+                </div>
+                <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="font-size: 24px;"><a href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1539157/abstract" target="_blank" style="color: #ac8989;">Opinion: Mental Health Research: To Augment or Not To Augment</a></h3>
+                    <p style="font-size: 18px;">  Argyrios Perivolaris, Alice Rueda, Karisa B Parkington, <strong class="highlight-name">Achint Soni</strong>, Sirisha Rambhatla, Reza Samavi, Rakesh Jetly, Andrew James Greenshaw, Yanbo Zhang, Bo Cao, Sri Krishnan, Venkat Bhat</p>
+                    <p style="font-size: 18px;"> <em>Frontiers in Psychiatry, 2025</em></p>
+<!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
+                </div>
+            </div>
+
             <div class="row mt-5">
                 <div class="col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="">
                     <img src="Videoscore.png" style="border-radius: 15px;" alt="Publication Image" class="img-fluid">
                 </div>
                 <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/pdf/2406.15252" target="_blank">VIDEOSCORE: Building Automatic Metrics to Simulate Fine-grained Human Feedback for Video Generation</a></h3>
+                    <h3 style="font-size: 24px;"><a href="https://arxiv.org/pdf/2406.15252" target="_blank" style="color: #ac8989;">VIDEOSCORE: Building Automatic Metrics to Simulate Fine-grained Human Feedback for Video Generation</a></h3>
                     <p style="font-size: 18px;"> Xuan He, Dongfu Jiang, Ge Zhang, Max Ku, <strong class="highlight-name">Achint Soni</strong>, Sherman Siu, Haonan Chen, Abhranil Chandra, Ziyan Jiang, Aaran Arulraj, Kai Wang, Quy Duc Do, Yuansheng Ni, Bohan Lyu, Yaswanth Narsupalli, Rongqi Fan, Zhiheng Lyu, Yuchen Lin, Wenhu Chen</p>
                     <p style="font-size: 18px;"> <em>EMNLP Main, 2024</em></p>
 <!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> The recent years have witnessed great advances in video generation. However, the development of automatic video metrics is lagging significantly behind. None of the existing metrics are able to provide reliable scores over generated videos. The main barrier is the lack of large-scale human-annotated datasets. In this paper, we release VIDEOFEEDBACK, the first large-scale dataset containing human-provided multi-aspect scores over 37.6K synthesized videos from 11 existing video generative models. We train VIDEOSCORE (initialized from Mantis) based on VIDEOFEEDBACK to enable automatic video quality assessment. Experiments show that the Spearman correlation between VIDEOSCORE and humans can reach 77.1 on VIDEOFEEDBACK-test, beating the prior best metrics by about 50 points. Further results on other held-out EvalCrafter, GenAI-Bench, and VBench show that VIDEOSCORE has consistently much higher correlation with human judges than other metrics. Due to these results, we believe VIDEOSCORE can serve as a great proxy for human raters to (1) rate different video models to track progress, and (2) simulate fine-grained human feedback in Reinforcement Learning with Human Feedback (RLHF) to improve current video generation models.</p> -->
@@ -907,7 +933,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 ml-auto" data-aos="fade-up" data-aos-delay="100">
-                    <h3 style="font-size: 24px;"><a href="https://openreview.net/pdf?id=Ao9UUaScAU" target="_blank">Why Do Variational Autoencoders Really Promote Disentanglement?</a></h3>
+                    <h3 style="font-size: 24px;"><a href="https://openreview.net/pdf?id=Ao9UUaScAU" target="_blank" style="color: #ac8989;">Why Do Variational Autoencoders Really Promote Disentanglement?</a></h3>
                     <p style="font-size: 18px;"> Pratik Bhowal, <strong class="highlight-name">Achint Soni</strong>, Sirisha Rambhatla</p>
                     <p style="font-size: 18px;"><em> International Conference on Machine Learning (ICML), 2024</em></p>
 <!--                     <p style="font-size: 18px;"><strong>Abstract:</strong> Despite not being designed for this purpose, the use of variational autoencoders (VAEs) has proven remarkably effective for disentangled representation learning (DRL). Recent research attributes this success to certain characteristics of the loss function that prevent latent space rotation, or hypothesize about the orthogonality properties of the decoder by drawing parallels with principal component analysis (PCA). This hypothesis, however, has only been tested experimentally for linear VAEs, and the theoretical justification still remains an open problem. Moreover, since real-world VAEs are often inherently non-linear due to the use of neural architectures, understanding DRL capabilities of real-world VAEs remains a critical task. Our work takes a step towards understanding disentanglement in real-world VAEs to theoretically establish how the orthogonality properties of the decoder promotes disentanglement in practical applications. Complementary to our theoretical contributions, our experimental results corroborate our analysis. Code is available at <a href="https://github.com/criticalml-uw/Disentanglement-in-VAE" target="_blank">https://github.com/criticalml-uw/Disentanglement-in-VAE</a>.</p> -->
